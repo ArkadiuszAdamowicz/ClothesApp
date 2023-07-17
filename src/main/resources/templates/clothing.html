@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClothingApp || Your Clothes</title>
+
+  <link href="/css/style.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/eb3781172a.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+<nav>
+  <div class="wrapper nav">
+    <div class="navbar">
+      <div class="logo"><a href="/">ClothingApp</a></div>
+      <ul class="links">
+        <li><a class="nav_btn" href="/dashboard">Home</a></li>
+        <li><a class="nav_btn" href="/clothing">Clothing</a></li>
+        <li><a class="nav_btn" href="/clothing/add">Add</a></li>
+        <li class="action_btn logout_btn"><a href="/logout">Logout</a></li>
+      </ul>
+      <div class="toggle_btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+
+    <div class="dropdown_menu">
+      <li><a href="/dashboard">HOME</a></li>
+      <li><a href="/clothing">CLOTHING</a></li>
+      <li><a href="/clothing/add">Add</a></li>
+      <li class="action_btn dash-btn logout_btn"><a href="/logout">Logout</a></li>
+    </div>
+  </div>
+</nav>
+
+
+<main class="clothing-view">
+  <div class="wrapper">
+    <div class="clothing-header">
+      <h1 class="clothing-title">All Clothing Items</h1>
+    </div>
+    <div class="form-category">
+      <div>
+        <div class="form-group">
+          <form th:action="@{/clothing}" method="get">
+            <select name="category" class="form-control custom-select" onchange="this.form.submit()">
+              <option value="">Choose category</option>
+              <option th:each="category : ${categories}" th:value="${category.id}"
+                      th:text="${category.name}"></option>
+            </select>
+          </form>
+        </div>
+        <div class="form-group">
+          <a href="/clothing" class="btn btn-secondary">Show All Items</a>
+        </div>
+
+      </div>
+    </div>
+    <div class="clothes-items">
+      <div class="warderobe">
+        <div th:each="item : ${items}" class="box">
+
+          <div class="clothes-info">
+            <h2 th:text="${item.name}"></h2>
+            <div class="clothes-desc">
+              <p>Description: <span th:text="${item.description}"></span></p>
+              <p>Category: <span th:text="${item.category.name}"></span></p>
+            </div>
+          </div>
+          <div class="services">
+            <div>
+              <img th:src="${item.imagePath}" alt="Clothing image" class="img-thumbnail">
+            </div>
+            <div class="buttons">
+              <a th:href="@{'/clothing/edit/' + ${item.id}}" class="btn-edit">Edit</a>
+              <a th:href="@{'/clothing/delete/' + ${item.id}}" class="btn-delete">Delete</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="added">
+        <a href="/clothing/add" class="btn-add">Add New Clothing Item</a>
+      </div>
+
+      <div class="space"></div>
+    </div>
+</main>
+
+<div class="cookie-box">
+  <p>This site uses cookies to provide the highest level of service. Your continued use of the site means that you agree to their use.</p>
+  <button class="cookie-btn">Accept</button>
+</div>
+<footer class="footer">
+  <p class="footer-text">&copy;<span class="footer__year"></span> ClothesApp</p>
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClothingApp</title>
+
+  <link href="/css/style.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/eb3781172a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav>
+  <div class="wrapper nav">
+    <div class="navbar">
+      <div class="logo"><a href="/">ClothingApp</a></div>
+      <ul class="links">
+        <li><a class="nav_btn" href="/">Home</a></li>
+        <li><a class="nav_btn" href="/clothing">Clothing</a></li>
+        <li class="action_btn login_btn"><a href="/login">Login</a></li>
+      </ul>
+      <div class="toggle_btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+
+    <div class="dropdown_menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="/clothing">Clothing</a></li>
+      <li><a class="action_btn login_btn" href="/login">Login</a></li>
+    </div>
+  </div>
+</nav>
+
+
+<header id="home" class="header">
+  <div class="hero-img"></div>
+  <div class="hero-text">
+     <h1 class="header-title" th:text="${message}"></h1>
+    <p class="header-subtitle">This is a simple clothing management application, where you can add, edit, and browse your clothes.</p><br>
+    <p class="header-subtitle">To log in to the application, click the button below.</p><br>
+    <a href="/login" role="button"> <button class="btn btn-special-animation login_btn">
+     Login
+    </button></a>
+  </div>
+</header>
+
+<div class="cookie-box">
+  <p>This site uses cookies to provide the highest level of service. Your continued use of the site means that you agree to their use.</p>
+  <button class="cookie-btn">Accept</button>
+</div>
+<footer class="footer">
+  <p class="footer-text">&copy;<span class="footer__year"></span> ClothesApp</p>
+</footer>
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
